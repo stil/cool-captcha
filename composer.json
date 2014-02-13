@@ -1,0 +1,8 @@
+{
+    "name": "stil/cool-captcha",
+    "autoload": {
+        "psr-0": {
+            "CoolCaptcha\\": "src/"
+        }
+    }
+}
