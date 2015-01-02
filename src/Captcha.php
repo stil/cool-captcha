@@ -3,52 +3,79 @@ namespace CoolCaptcha;
 
 class Captcha
 {
-    /** Width of the image */
+    /**
+     * Width of the image
+     * @var int
+     */
     public $width  = 200;
 
-    /** Height of the image */
+    /**
+     * Height of the image
+     * @var int
+     */
     public $height = 70;
 
-    /** Dictionary word file (empty for random text) */
+    /**
+     * Dictionary word file (empty for random text)
+     * @var string
+     */
     public $wordsFile = 'words/en.php';
 
     /**
      * Path for resource files (fonts, words, etc.)
-     *
-     * "resources" by default. For security reasons, is better move this
+     * __DIR__."/Resources" by default. For security reasons, is better move this
      * directory to another location outise the web server
      *
+     * @var string
      */
     public $resourcesPath;
 
-    /** Min word length (for non-dictionary random text generation) */
+    /**
+     * Min word length (for non-dictionary random text generation)
+     * @var int
+     */
     public $minWordLength = 5;
 
     /**
      * Max word length (for non-dictionary random text generation)
-     * 
      * Used for dictionary words indicating the word-length
      * for font-size modification purposes
+     * @var int
      */
     public $maxWordLength = 8;
 
-    /** Sessionname to store the original text */
+    /**
+     * Sessionname to store the original text
+     * @var string
+     */
     public $session_var = 'captcha';
 
-    /** Background color in RGB-array */
+    /**
+     * Background color in RGB-array
+     * @var int[]
+     */
     public $backgroundColor = [255, 255, 255];
 
-    /** Foreground colors in RGB-array */
+    /**
+     * Foreground colors in RGB-array
+     * @var int[][]
+     */
     public $colors = [
         [27,  78,  181], // blue
         [22,  163, 35],  // green
         [214, 36,  7],   // red
     ];
 
-    /** Shadow color in RGB-array or null */
-    public $shadowColor = null; //array(0, 0, 0);
+    /**
+     * Shadow color in RGB-array or null. For example [0, 0, 0]
+     * @var int[]
+     */
+    public $shadowColor = null;
 
-    /** Horizontal line through the text */
+    /**
+     * Horizontal line through the text
+     * @var int
+     */
     public $lineWidth = 0;
 
     /**
@@ -58,6 +85,7 @@ class Captcha
      * - spacing: relative pixel space between character
      * - minSize: min font size
      * - maxSize: max font size
+     * @var array
      */
     public $fonts = [
         'Antykwa'  => ['spacing' => -3, 'minSize' => 27, 'maxSize' => 30, 'font' => 'AntykwaBold.ttf'],
@@ -72,33 +100,51 @@ class Captcha
     ];
 
     /** Wave configuracion in X and Y axes */
+    /** @var int  */
     public $Yperiod    = 12;
+    /** @var int  */
     public $Yamplitude = 14;
+    /** @var int  */
     public $Xperiod    = 11;
+    /** @var int  */
     public $Xamplitude = 5;
 
-    /** letter rotation clockwise */
+    /**
+     * Letter rotation clockwise
+     * @var int
+     */
     public $maxRotation = 8;
 
     /**
      * Internal image size factor (for better image quality)
      * 1: low, 2: medium, 3: high
+     * @var int
      */
     public $scale = 3;
 
-    /** 
+    /**
      * Blur effect for better image quality (but slower image processing).
      * Better image results with scale=3
+     * @var bool
      */
     public $blur = false;
 
-    /** Debug? */
+    /**
+     * Debug?
+     * @var bool
+     */
     public $debug = false;
     
-    /** Image format: jpeg or png */
+    /**
+     * Image format: jpeg or png
+     * @var string
+     */
     public $imageFormat = 'png';
 
-    /** GD image */
+    /**
+     * GD image
+     * @var resource
+     */
     public $im;
 
     public function __construct()
@@ -106,6 +152,10 @@ class Captcha
         $this->resourcesPath = __DIR__.'/Resources';
     }
 
+    /**
+     * Generates captcha and outputs it to the browser.
+     * @return string Text answer of generated captcha
+     */
     public function createImage()
     {
         $ini = microtime(true);
@@ -199,6 +249,7 @@ class Captcha
     /**
      * Random text generation
      *
+     * @param int|null Text length
      * @return string Text
      */
     protected function getRandomCaptchaText($length = null)
@@ -279,7 +330,6 @@ class Captcha
      */
     protected function writeLine()
     {
-
         $x1 = $this->width*$this->scale*.15;
         $x2 = $this->textFinalX;
         $y1 = rand($this->height*$this->scale*.40, $this->height*$this->scale*.65);
@@ -375,7 +425,6 @@ class Captcha
      */
     protected function reduceImage()
     {
-        // Reduzco el tamaño de la imagen
         $imResampled = imagecreatetruecolor($this->width, $this->height);
         imagecopyresampled($imResampled, $this->im,
             0, 0, 0, 0,
