@@ -1,7 +1,9 @@
 {
     "name": "stil/cool-captcha",
+    "description": "Classes generating fancy image captchas using GD extension.",
+    "license": "GPL-3.0",
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "CoolCaptcha\\": "src/"
         }
     }
