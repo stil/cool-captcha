@@ -54,17 +54,17 @@ class Captcha
      * Background color in RGB-array
      * @var int[]
      */
-    public $backgroundColor = [255, 255, 255];
+    public $backgroundColor = array(255, 255, 255);
 
     /**
      * Foreground colors in RGB-array
      * @var int[][]
      */
-    public $colors = [
-        [27,  78,  181], // blue
-        [22,  163, 35],  // green
-        [214, 36,  7],   // red
-    ];
+    public $colors = array(
+        array(27,  78,  181), // blue
+        array(22,  163, 35),  // green
+        array(214, 36,  7),   // red
+    );
 
     /**
      * Shadow color in RGB-array or null. For example [0, 0, 0]
@@ -87,17 +87,17 @@ class Captcha
      * - maxSize: max font size
      * @var array
      */
-    public $fonts = [
-        'Antykwa'  => ['spacing' => -3, 'minSize' => 27, 'maxSize' => 30, 'font' => 'AntykwaBold.ttf'],
-        'Candice'  => ['spacing' =>-1.5,'minSize' => 28, 'maxSize' => 31, 'font' => 'Candice.ttf'],
-        'DingDong' => ['spacing' => -2, 'minSize' => 24, 'maxSize' => 30, 'font' => 'Ding-DongDaddyO.ttf'],
-        'Duality'  => ['spacing' => -2, 'minSize' => 30, 'maxSize' => 38, 'font' => 'Duality.ttf'],
-        'Heineken' => ['spacing' => -2, 'minSize' => 24, 'maxSize' => 34, 'font' => 'Heineken.ttf'],
-        'Jura'     => ['spacing' => -2, 'minSize' => 28, 'maxSize' => 32, 'font' => 'Jura.ttf'],
-        'StayPuft' => ['spacing' =>-1.5,'minSize' => 28, 'maxSize' => 32, 'font' => 'StayPuft.ttf'],
-        'Times'    => ['spacing' => -2, 'minSize' => 28, 'maxSize' => 34, 'font' => 'TimesNewRomanBold.ttf'],
-        'VeraSans' => ['spacing' => -1, 'minSize' => 20, 'maxSize' => 28, 'font' => 'VeraSansBold.ttf']
-    ];
+    public $fonts = array(
+        'Antykwa'  => array('spacing' => -3, 'minSize' => 27, 'maxSize' => 30, 'font' => 'AntykwaBold.ttf'),
+        'Candice'  => array('spacing' =>-1.5,'minSize' => 28, 'maxSize' => 31, 'font' => 'Candice.ttf'),
+        'DingDong' => array('spacing' => -2, 'minSize' => 24, 'maxSize' => 30, 'font' => 'Ding-DongDaddyO.ttf'),
+        'Duality'  => array('spacing' => -2, 'minSize' => 30, 'maxSize' => 38, 'font' => 'Duality.ttf'),
+        'Heineken' => array('spacing' => -2, 'minSize' => 24, 'maxSize' => 34, 'font' => 'Heineken.ttf'),
+        'Jura'     => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 32, 'font' => 'Jura.ttf'),
+        'StayPuft' => array('spacing' =>-1.5,'minSize' => 28, 'maxSize' => 32, 'font' => 'StayPuft.ttf'),
+        'Times'    => array('spacing' => -2, 'minSize' => 28, 'maxSize' => 34, 'font' => 'TimesNewRomanBold.ttf'),
+        'VeraSans' => array('spacing' => -1, 'minSize' => 20, 'maxSize' => 28, 'font' => 'VeraSansBold.ttf')
+    );
 
     /** Wave configuracion in X and Y axes */
     /** @var int  */
@@ -344,7 +344,7 @@ class Captcha
     /**
      * Text insertion
      */
-    protected function writeText($text, $fontcfg = [])
+    protected function writeText($text, $fontcfg = array())
     {
         if (empty($fontcfg)) {
             // Select the font configuration
