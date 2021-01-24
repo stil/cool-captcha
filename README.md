@@ -3,7 +3,7 @@ cool-captcha
 
 It is refined [cool-php-captcha](https://code.google.com/p/cool-php-captcha/) library rehosted on GitHub.
 
-###Example of use
+### Example of use
 ```php
 <?php
 require __DIR__.'/vendor/autoload.php';
@@ -37,7 +37,7 @@ $text = $captcha->createImage();
 $_SESSION['text'] = $text;
 ```
 
-###Generated captchas
+### Generated captchas
 
 ![alt](examples/1.png?raw=true)
 ![alt](examples/2.png?raw=true)
